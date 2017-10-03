@@ -7,9 +7,6 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.Duration;
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -22,13 +19,9 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import com.bullhornsdk.data.api.BullhornData;
 import com.bullhorn.soap26.Session;
-import com.bullhornsdk.data.model.entity.core.standard.CorporateUser;
 import com.bullhornsdk.data.model.parameter.QueryParams;
 import com.bullhornsdk.data.model.parameter.standard.ParamFactory;
-import com.bullhornsdk.data.model.response.list.CorporateUserListWrapper;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.joda.JodaModule;
 
 public class Clock {
 
@@ -93,19 +86,6 @@ public class Clock {
                     long seconds = millis / 1000;
                     millis -= (seconds * 1000);
                     label1.setText(String.format("%02d:%02d", minutes, seconds));
-
-        			Set<String> id = new HashSet<String>();
-        			id.add("id>0");
-        			QueryParams params = ParamFactory.queryParams();
-        			CorporateUserListWrapper corpList = (CorporateUserListWrapper) rest.query(corp.getClass(), "id>0", null, params);
-        			ObjectMapper mapper = new ObjectMapper();
-        			mapper.registerModule(new JodaModule());
-        			try {
-						System.out.print(mapper.writeValueAsString(corpList));
-					} catch (JsonProcessingException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
                  
                     if(selection == 1){
                     	
