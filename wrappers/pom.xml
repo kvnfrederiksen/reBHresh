@@ -1,0 +1,51 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.bullhorn.qa</groupId>
+	<artifactId>soaptest</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jdk.version>1.6</jdk.version>
+		<maven.version>3.5.1</maven.version>
+        <baseRoot>${session.executionRootDirectory}</baseRoot>
+	</properties>
+
+	<modules>
+		<module>soap26wrapper</module>
+		<module>soap26adimwrapper</module>
+	</modules>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.version}</version>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+				</configuration>
+			</plugin>
+
+            <plugin>
+                <groupId>com.bullhorn.mvn</groupId>
+                <artifactId>template-plugin</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>addBuildInfo</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <gitRoot>${baseRoot}</gitRoot>
+                </configuration>
+            </plugin>
+		</plugins>
+	</build>
+</project>

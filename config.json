@@ -1,0 +1,23 @@
+{
+	"baseUrl": "http://soap-test-backend:8182/",
+	"testRuns": [
+		{
+			"user" : {
+				"apiKey": "",
+				"userName": "",
+				"password": ""
+			},
+			"candidateId": 15815,
+			"expectedSsn": "599-21-4833"
+		},
+		{
+			"user" : {
+				"apiKey": "2EDAE58A-D09B-CE43-29E39075C835A951",
+				"userName": "lavauser01",
+				"password": "qaonly"
+			},
+			"candidateId": 1357,
+			"expectedSsn": "123-54-6783"
+		}
+	]
+}

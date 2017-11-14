@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="bullhorn-api-toolkit" default="usage">
+
+    <!--
+      SETTINGS
+    -->
+
+    <property file="build.local.properties" />
+    <property file="build.properties" />
+    <property name="lib.dir" location="lib" />
+    <property name="src.dir" location="src" />
+    <property name="target.dir" location="target" />
+    <property name="classes.dir" location="${target.dir}/classes" />
+
+    <!--
+      TASKDEFS
+    -->
+
+    <taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport">
+        <classpath>
+            <fileset dir="${lib.dir}">
+                <include name="webservices-tools.jar" />
+            </fileset>
+        </classpath>
+    </taskdef>
+
+    <!--
+      PUBLIC TARGETS
+    -->
+
+    <target name="usage">
+        <echo>"ant wsdl2java" to generate java classes from wsdl.
+
+Goto eg-xxx folder, "ant" to run the example.
+
+eg-simple contains the most basic example.
+</echo>
+    </target>
+
+    <target name="clean">
+        <delete dir="${src.dir}" includeemptydirs="yes" />
+        <delete dir="${target.dir}" includeemptydirs="yes" />
+    </target>
+
+    <target name="wsdl2java" depends="clean">
+        <mkdir dir="${src.dir}" />
+        <mkdir dir="${classes.dir}" />
+        <wsimport wsdl="${wsdl.url}"
+                  destdir="${classes.dir}"
+                  sourcedestdir="${src.dir}"
+                  keep="true"
+                  debug="${debug}"
+                  verbose="${verbose}">
+        </wsimport>
+        <wsimport wsdl="${emailwsdl.url}"
+                  destdir="${classes.dir}"
+                  sourcedestdir="${src.dir}"
+                  keep="true"
+                  debug="${debug}"
+                  verbose="${verbose}">
+        </wsimport>
+        <jar jarfile="${target.dir}/bullhorn-api-wsdl.jar">
+            <fileset dir="${classes.dir}" />
+        </jar>
+    </target>
+
+</project>
