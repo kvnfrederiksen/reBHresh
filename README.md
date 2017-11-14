@@ -1,3 +1,20 @@
-Refreshes BHRestTokens and SOAP v.1 and v.2 Auth keys via UI every 9 minutes 50 seconds, or 4 minutes 50 seconds respectively.
+You must package wrappers prior to running soaptester. JARs that are outputed from wrappers are required by soaptester.
+```
+cd wrappers
+mvn package
+```
 
-Used existing open source REST and SOAP SDKs.
+then you cna build soaptester
+```
+cd soaptester
+mvn package
+```
+
+Then you can run soaptester
+```
+cd soaptester/target
+java -jar soaptester-1.0-SNAPSHOT.jar ../../config.json
+```
+
+
+Update config.json to match the SL you are testing
