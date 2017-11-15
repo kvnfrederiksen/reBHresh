@@ -54,8 +54,8 @@ import javax.xml.namespace.QName;
 
 public class TristaffTest{
 	
-	private String password = "Christos1!";
-	private String username = "kfred.bbo";
+	private String password = "";
+	private String username = "";
 	private QueryParams params = ParamFactory.queryParams();
 	private SearchParams searchparams = ParamFactory.searchParams();
 	private Set<String> fields = Sets.newHashSet("id");
@@ -97,13 +97,13 @@ public class TristaffTest{
 				"https://api.bullhornstaffing.com/webservices-1.0/?wsdl");
 		ApiService service = new ApiService_Service(serviceUrl, SERVICE_NAME).getApiServicePort();
 
-		ApiSession currentSession = service.startSession(username, password, "BED3FC9B-CC34-C1DC-1DF10ECBEB058996");
+		ApiSession currentSession = service.startSession(username, password, "");
 		
 		BullhornRestCredentials creds = new BullhornRestCredentials();		
 		creds.setUsername(username);
 		creds.setPassword(password);
-		creds.setRestClientId("5a3978c9-05fb-4c05-8c74-9801bc265ee0");
-		creds.setRestClientSecret("MyTvghTA9Olz0UBrXmruo0AeDWvXenLB");
+		creds.setRestClientId("");
+		creds.setRestClientSecret("");
 		creds.setRestAuthorizeUrl("https://auth.bullhornstaffing.com/oauth/authorize");
 		creds.setRestTokenUrl("https://auth.bullhornstaffing.com/oauth/token");
 		creds.setRestLoginUrl("https://rest.bullhornstaffing.com/rest-services/login");
